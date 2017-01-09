@@ -8,7 +8,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """ 
 
-    def __init__(self, env, learning=False, epsilon=1.0, alpha=0.5, decay_method='linear', decay_rate=0.05):
+    def __init__(self, env, learning=False, epsilon=1.0, alpha=0.4, decay_method='linear', decay_rate=0.05):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment 
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -79,13 +79,10 @@ class LearningAgent(Agent):
         # When learning, check if the state is in the Q-table
         #   If it is not, create a dictionary in the Q-table for the current 'state'
         #   For each action, set the Q-value for the state-action pair to 0
-        
         state = (waypoint, inputs['light'], inputs['left'], inputs['oncoming'])
 
-        if self.learning == True:
-            if state not in self.Q:
-                self.Q[state] = { None: 0, 'forward': 0, 'left': 0, 'right': 0 }
-
+        # check if the 'state' is not in the Q-table
+        self.createQ(state)
 
         return state
 
@@ -98,7 +95,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-        maxQ = max([self.Q[state][action] for action in [ None, 'forward', 'left', 'right']])
+        maxQ = max(self.Q[state].values())
 
         return maxQ 
 
@@ -143,10 +140,15 @@ class LearningAgent(Agent):
                 max_q = self.get_maxQ(state)
                 best_action = None
 
+                action_list = []
+                # For each action determine its utility value
                 for a in [ None, 'forward', 'left', 'right']:
                     q = self.Q[state][a]
+                    # If utility value matches the highest value add to list of actions
                     if q == max_q:
-                        action = a
+                        action_list.append(a)
+                # If any tie selecting one of the involved actions randomly.
+                action = random.choice(action_list)
  
         return action
 
@@ -163,8 +165,9 @@ class LearningAgent(Agent):
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
         if self.learning == True:
             old_q = self.Q[state][action]
-            max_q = self.get_maxQ(state)
-            self.Q[state][action] = old_q + self.alpha*(reward + max_q - old_q)
+            # max_q = self.get_maxQ(state)
+            # self.Q[state][action] = old_q + self.alpha*(reward + max_q - old_q)
+            self.Q[state][action] = old_q + self.alpha*(reward - old_q)
 
         return
 
@@ -201,7 +204,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning=True, decay_method='exponential_1', decay_rate=0.99)
+    agent = env.create_agent(LearningAgent, learning=True, decay_method='exponential_1', decay_rate=0.9975)
     
     ##############
     # Follow the driving agent
@@ -216,14 +219,14 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay=2, log_metrics=True, optimized=True)
+    sim = Simulator(env, update_delay=0.001, display=False, log_metrics=True, optimized=True)
 
     ##############
     # Run the simulator
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(n_test=20)
+    sim.run(n_test=30)
 
 
 if __name__ == '__main__':

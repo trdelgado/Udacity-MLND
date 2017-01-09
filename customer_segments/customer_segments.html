@@ -12176,7 +12176,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -12231,7 +12231,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -12358,7 +12358,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -12442,7 +12442,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Verify percent rank of sample data to understand where points lie within the dataset</span>
@@ -12457,7 +12457,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[55]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -12568,7 +12568,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -12632,7 +12632,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I attempted to predict Detergents_Paper and was able to get a positive score of 0.780622419369. I would argue that the because the score was relatively high it is significant and could be captured by other features presented in the dataset.</p>
+<p>I attempted to predict Detergents_Paper and was able to get a positive score of 0.780622419369. I would argue that the because the score was relatively high it is significant and could be captured by other features such as groceries presented in the dataset. Thus if Detergents_Paper can be captured within the rest of the features in the dataset it is redundant and won't help in either clustering or classification tasks. Would recommend performing data preprocessing to reduce or eliminate features that are highly correlated to reduce the curse of dimensionality as well as any hidden collinearity affects.</p>
 
 </div>
 </div>
@@ -12649,7 +12649,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -15307,12 +15307,111 @@ MzMzMzMzs7b8P6YbhZeIVDkmAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Matrix of correlations for all feature pairs</span>
+<span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[58]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fresh</th>
+      <th>Milk</th>
+      <th>Grocery</th>
+      <th>Frozen</th>
+      <th>Detergents_Paper</th>
+      <th>Delicatessen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Fresh</th>
+      <td>1.000000</td>
+      <td>0.100510</td>
+      <td>-0.011854</td>
+      <td>0.345881</td>
+      <td>-0.101953</td>
+      <td>0.244690</td>
+    </tr>
+    <tr>
+      <th>Milk</th>
+      <td>0.100510</td>
+      <td>1.000000</td>
+      <td>0.728335</td>
+      <td>0.123994</td>
+      <td>0.661816</td>
+      <td>0.406368</td>
+    </tr>
+    <tr>
+      <th>Grocery</th>
+      <td>-0.011854</td>
+      <td>0.728335</td>
+      <td>1.000000</td>
+      <td>-0.040193</td>
+      <td>0.924641</td>
+      <td>0.205497</td>
+    </tr>
+    <tr>
+      <th>Frozen</th>
+      <td>0.345881</td>
+      <td>0.123994</td>
+      <td>-0.040193</td>
+      <td>1.000000</td>
+      <td>-0.131525</td>
+      <td>0.390947</td>
+    </tr>
+    <tr>
+      <th>Detergents_Paper</th>
+      <td>-0.101953</td>
+      <td>0.661816</td>
+      <td>0.924641</td>
+      <td>-0.131525</td>
+      <td>1.000000</td>
+      <td>0.069291</td>
+    </tr>
+    <tr>
+      <th>Delicatessen</th>
+      <td>0.244690</td>
+      <td>0.406368</td>
+      <td>0.205497</td>
+      <td>0.390947</td>
+      <td>0.069291</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Based on the graph above it seems there is a strong positive correlation between Detergents_Paper &amp; Grocery, and to a smaller degree Milk and Detergents_Paper which supports my earlier assumption about the relevance of Detergents_Paper. The data from the graphs seems skewed to the right to show a postive distribution since most points lie on the left.</p>
+<p>Based on the graph above it seems there is a strong positive correlation between Detergents_Paper &amp; Grocery, and to a smaller degree Milk to Grocery and Detergents_Paper which supports my earlier assumption about the relevance of Detergents_Paper. The data from the graphs seems skewed to the right to show a postive distribution since most points lie on the left.</p>
 
 </div>
 </div>
@@ -15344,7 +15443,7 @@ MzMzMzMzs7b8P6YbhZeIVDkmAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
@@ -20953,7 +21052,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
@@ -21044,10 +21143,12 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># For each feature find the data points with extreme high or low values</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">outliers</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># For each feature find the data points with extreme high or low values</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">log_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     
     <span class="c1"># TODO: Calculate Q1 (25th percentile of the data) for the given feature</span>
@@ -21059,15 +21160,28 @@ Once you have performed this implementation, the dataset will be stored in the v
     <span class="c1"># TODO: Use the interquartile range to calculate an outlier step (1.5 times the interquartile range)</span>
     <span class="n">step</span> <span class="o">=</span>  <span class="mf">1.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span><span class="p">)</span>
     
+    <span class="c1">#outliers_counter[(log_data[feature] &lt; step - Q1) or (step - Q1 &lt; log_data[feature])]</span>
+    <span class="n">outliers</span> <span class="o">+=</span> <span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
     <span class="c1"># Display the outliers</span>
     <span class="k">print</span> <span class="s2">&quot;Data points considered outliers for the feature &#39;{}&#39;:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
     <span class="n">display</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))])</span>
-    
+
 <span class="c1"># OPTIONAL: Select the indices for data points you wish to remove</span>
-<span class="n">outliers</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">154</span><span class="p">]</span>
+<span class="c1"># Convert list of outliers into dictionary to get total frequency of occurences</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+
+<span class="c1"># If outlier is seen more than once than keep it common outlier list</span>
+<span class="n">common_outliers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">outliers</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">outliers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">common_outliers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># Display most common outliers</span>
+<span class="k">print</span> <span class="n">common_outliers</span>
 
 <span class="c1"># Remove the outliers, if any were specified</span>
-<span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">common_outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -21696,6 +21810,13 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 </div>
 
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[128, 154, 65, 66, 75]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -21725,8 +21846,8 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Yes, when I analyze the charts I see data points 65 for both fresh &amp; frozen, 66 for fresh &amp; delicatessen, 75 for grocery &amp; detergents_paper, 128 for fresh &amp; delicatessen, and finally 154 for milk, grocery, and delicatessen.</p>
-<p>I believe it would be appropriate to remove these features since they are outliers in more than one feature.</p>
+<p>Yes, when I analyze the charts I see data point 65 present in both fresh &amp; frozen, 66 for fresh &amp; delicatessen, 75 for grocery &amp; detergents_paper, 128 for fresh &amp; delicatessen, and finally 154 for milk, grocery, and delicatessen.</p>
+<p>I believe further analysis of each outlier is highly recommended in order to figure out if these values are incorrect or especially rare customer spending habits. While the outliers do not seem to suggest incorrect values, given the circumstances I think it would be best to omit these values from further analysis. We do not have access to additional information to verify these data points or reach out to these customers to gain insights to their needs. In addition, we would like our unsupervised models to generalize to customer segments without overfitting our clustering results to outliers (especially given our relatively small dataset).</p>
 
 </div>
 </div>
@@ -21758,7 +21879,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import PCA </span>
@@ -22390,6 +22511,40 @@ JEmSJEmqsGgkSZIkSZKkiv8DX7lcXqi8o3UAAAAASUVORK5CYII=
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Calculate the total explained variance for the first two and first four principal components</span>
+<span class="k">print</span> <span class="n">pca_results</span><span class="p">[</span><span class="s1">&#39;Explained Variance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dimension 1    0.4430
+Dimension 2    0.7068
+Dimension 3    0.8299
+Dimension 4    0.9311
+Dimension 5    0.9796
+Dimension 6    1.0000
+Name: Explained Variance, dtype: float64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -24329,7 +24484,7 @@ JEmSJFUkgzFJkiRJkiRVpP8Po26DPD3C/CYAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The K-Means provides concrete clustering assignments and is more efficient/faster algorithm that will converge even with large datasets compared to the Gaussian Mixture Model. On the other hand GMM avoid local minima issues while providing probabilties and variences for each clusters a point might belong to - thus can give a more accurate reflection of how instances can belong to more than one cluster.</p>
+<p>The K-Means provides concrete clustering assignments and is more efficient/faster algorithm that will converge even with large datasets compared to the Gaussian Mixture Model. On the other hand GMM avoid local minima issues while providing probabilties and variances for each clusters a point might belong to - thus can give a more accurate reflection the underlying structure of the data. That is we can see how data points can belong to more than one cluster.</p>
 <p>I decided to use GMM because the dataset has more details about the structure of the data and at the same time the dataset is not so large that we have to worry about the scalability or the computations resources of the mixture model.</p>
 
 </div>
@@ -24378,6 +24533,7 @@ JEmSJFUkgzFJkiRJkiRVpP8Po26DPD3C/CYAAAAASUVORK5CYII=
 <span class="n">sample_preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pca_samples</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate the mean silhouette coefficient for the number of clusters chosen</span>
+<span class="c1"># Calculated score using the mean intra-cluster distance and the mean nearest-cluster distance</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="n">score</span>

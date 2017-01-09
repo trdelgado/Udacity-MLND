@@ -11700,6 +11700,10 @@ ul.typeahead-list > li > a {
   Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
 */
 
+body, body.notebook_app.command_mode {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 /* 
   SET THE CODE/MONOSPACE FONT 
   I prefer Bitsream Vera Sans Mono, which is freely downloadable here:
@@ -12003,9 +12007,10 @@ div.output_html { font-family: sans-serif; }
     border-radius: 0px;
     border: 1px solid #464b50;
   }
+  .notebook_app div.output_subarea { max-width: 100%; }
   .notebook_app div.output_area pre { font-weight: normal; color: #979797; }
   .notebook_app div.output_subarea { font-weight: normal; color: #979797; }
-  .notebook_app div.output_stderr {background-color: #cf6a4c;}
+  .notebook_app div.output_stderr {background-color: #A0783C;}
   .notebook_app div.output_stderr pre {color: #eee;}
 
   .notebook_app .rendered_html table, .notebook_app .rendered_html th, .notebook_app .rendered_html tr, .notebook_app .rendered_html td {
@@ -12992,7 +12997,7 @@ Fill in the missing code below so that the function will make this prediction.<b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">predictions_1</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -13034,7 +13039,7 @@ Fill in the missing code below so that the function will make this prediction.<b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
@@ -13083,7 +13088,7 @@ Run the code cell below to plot the survival outcomes of male passengers based o
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">vs</span><span class="o">.</span><span class="n">survival_stats</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Sex == &#39;male&#39;&quot;</span><span class="p">])</span>
@@ -13510,7 +13515,7 @@ Fill in the missing code below so that the function will make this prediction.<b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">predictions_2</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -13556,7 +13561,7 @@ Fill in the missing code below so that the function will make this prediction.<b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
@@ -13607,14 +13612,13 @@ Fill in the missing code below so that the function will make this prediction.<b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#vs.survival_stats(data, outcomes, &#39;Age&#39;, [&quot;Sex == &#39;male&#39;&quot;, &quot;Age &lt; 18&quot;])</span>
 <span class="c1">#vs.survival_stats(data, outcomes, &#39;Age&#39;, [&quot;Sex == &#39;female&#39;&quot;])</span>
 <span class="c1">#vs.survival_stats(data, outcomes, &#39;Pclass&#39;, [&quot;Sex == &#39;female&#39;&quot;])</span>
 <span class="c1">#vs.survival_stats(data, outcomes, &#39;Fare&#39;, [&quot;Sex == &#39;female&#39;&quot;])</span>
-
 <span class="c1">#vs.survival_stats(data, outcomes, &#39;Fare&#39;, [&quot;Sex == &#39;male&#39;&quot;, &quot;Pclass != 3&quot;])</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">survival_stats</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Sex == &#39;female&#39;&quot;</span><span class="p">])</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">survival_stats</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">,</span> <span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Sex == &#39;female&#39;&quot;</span><span class="p">])</span>
@@ -14369,7 +14373,7 @@ Make sure to keep track of the various features and conditions you tried before 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[116]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">predictions_3</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -14380,8 +14384,6 @@ Make sure to keep track of the various features and conditions you tried before 
         
         <span class="c1"># Remove the &#39;pass&#39; statement below </span>
         <span class="c1"># and write your prediction conditions here</span>
-  
-        
         <span class="k">if</span> <span class="n">passenger</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">17</span> <span class="ow">and</span> <span class="p">(</span><span class="n">passenger</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">passenger</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
             <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">passenger</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">passenger</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">passenger</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
@@ -14475,7 +14477,7 @@ Make sure to keep track of the various features and conditions you tried before 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>:</p>
-<p>One possible area where supervised learning could be applied is in the financal or banking industry in order to determine the likelihood a load might be repaid within a fixed time frame. We could use historical aggregated data (cleaned and preprocessed with permission) from previous customers to predict a current customers's potential to default (yes=1, no=0) based on their credit score and current income to debt ratio.</p>
+<p>One possible area where supervised learning could be applied is in the financal or banking industry in order to determine the likelihood a loan might be repaid within a fixed time frame. We could use historical aggregated data (cleaned and preprocessed with permission) from previous customers to predict a current customer's potential to default (yes=1, no=0) based on their credit score and income to debt ratio.</p>
 
 </div>
 </div>
